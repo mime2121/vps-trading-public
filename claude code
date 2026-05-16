@@ -1,0 +1,22 @@
+cat > install.sh << 'EOF'
+#!/bin/bash
+
+# Node.js installieren
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Claude Code installieren
+npm install -g @anthropic-ai/claude-code
+
+# API-Key setzen (ersetze mit deinem echten Key)
+echo 'export ANTHROPIC_API_KEY="sk-ant-DEIN-KEY-HIER"' >> ~/.bashrc
+source ~/.bashrc
+
+# Version prüfen
+claude --version
+
+echo "✅ Claude Code ist bereit! Starte mit: claude"
+EOF
+
+chmod +x install.sh
+./install.sh
